@@ -9,46 +9,67 @@ import { User } from './components/user/user';
 import { ReactiveUser } from './components/reactive-user/reactive-user';
 import { PipeEx } from './components/pipe-ex/pipe-ex';
 import { ResourceAPI } from './components/resource-api/resource-api';
+import { Login } from './components/login/login';
+import { Layout } from './components/layout/layout';
 
 export const routes: Routes = [
+
     {
-        path:'admin',
-        component:Admin
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
     },
     {
-        path: 'control-flow-statment',
-        component:ControlFlow
+        path: 'login',
+        component: Login
     },
     {
-        path:'databinding',
-        component:DataBinding 
-    }, 
-    {
-        path:'signal',
-        component: SignalEx
-    },
-    {
-        path:'Attribute-dir',
-        component:AttDirective
-    },
-    {
-        path:'get-api',
-        component:GetApi
-    },
-    {
-        path:'users',
-        component:User
-    },
-    {
-        path:'reactive-users',
-        component:ReactiveUser
-    },
-    {
-        path:'pipe',
-        component:PipeEx
-    },
-    {
-        path:'resource',
-        component:ResourceAPI
+        path: '',
+        component: Layout,
+        children: [
+
+            {
+                path: 'admin',
+                component: Admin
+            },
+            {
+                path: 'control-flow-statment',
+                component: ControlFlow
+            },
+            {
+                path: 'databinding',
+                component: DataBinding
+            },
+
+            {
+                path: 'signal',
+                component: SignalEx
+            },
+            {
+                path: 'Attribute-dir',
+                component: AttDirective
+            },
+            {
+                path: 'get-api',
+                component: GetApi
+            },
+            {
+                path: 'users',
+                component: User
+            },
+            {
+                path: 'reactive-users',
+                component: ReactiveUser
+            },
+            {
+                path: 'pipe',
+                component: PipeEx
+            },
+            {
+                path: 'resource',
+                component: ResourceAPI
+            }
+        ]
     }
+
 ];
