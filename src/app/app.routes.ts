@@ -11,6 +11,7 @@ import { PipeEx } from './components/pipe-ex/pipe-ex';
 import { ResourceAPI } from './components/resource-api/resource-api';
 import { Login } from './components/login/login';
 import { Layout } from './components/layout/layout';
+import { RxjsBasic } from './components/rxjs/rxjs-basic/rxjs-basic';
 
 export const routes: Routes = [
 
@@ -44,6 +45,10 @@ export const routes: Routes = [
             {
                 path: 'signal',
                 component: SignalEx
+            },
+            {
+                path: 'rxjs-basic',
+                component: RxjsBasic
             },
             {
                 path: 'Attribute-dir',
