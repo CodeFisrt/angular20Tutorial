@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Master } from '../../services/master';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-layout',
@@ -12,6 +13,7 @@ export class Layout {
 
   loggedUserName: string = '';
   router= inject(Router)
+  userSrv  = inject(UserService)
 
   constructor(private masterService: Master) {
     this.readLoggedData();
@@ -19,6 +21,12 @@ export class Layout {
       this.readLoggedData();
     })
 
+  }
+
+  onRoleChange(event: any) {
+    debugger;
+    this.userSrv.$roleBehvaiour.next(event.target.value)
+    this.userSrv.$roleSub.next(event.target.value)
   }
 
   readLoggedData() {

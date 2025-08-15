@@ -6,28 +6,33 @@
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link active" routerLink="admin">Admin</a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link" routerLink="databinding">databinding</a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link" routerLink="signal">signal</a>
         </li>
-         <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link" routerLink="rxjs-basic">Rxjs-Basic</a>
         </li>
       </ul>
-      <form class="d-flex"> 
+      <form class="d-flex">
+        <select name="" id="" (change)="onRoleChange($event)">
+          <option value="Guest">Guest</option>
+          <option value="Admin">Admin</option>
+          <option value="SuperAdmin">Super Admin</option>
+        </select>
         @if (loggedUserName == '') {
-          <button class="btn btn-primary" routerLink="login" type="button">Login</button>
+        <button class="btn btn-primary" routerLink="login" type="button">Login</button>
         } @else {
-          <button class="btn btn-warning"   type="button">{{loggedUserName}}</button>
-         <button class="btn btn-primary"  (click)="onLogOfff()" type="button">Logoff</button>
+        <button class="btn btn-warning" type="button">{{loggedUserName}}</button>
+        <button class="btn btn-primary" (click)="onLogOfff()" type="button">Logoff</button>
         }
-       
-       
+
+
       </form>
     </div>
   </div>
