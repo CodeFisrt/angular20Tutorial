@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { map, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,31 @@ export class Master {
 
   getSum(num1: number, num2: number) {
     debugger;
-    const result =  num1 + num2;
+    const result = num1 + num2;
     return result;
   }
 
   getUsers() {
-     debugger;
-   return this.http.get("https://api.freeprojectapi.com/api/GoalTracker/getAllUsers")
+    debugger;
+    return this.http.get("https://api.freeprojectapi.com/api/GoalTracker/getAllUsers")
+  }
+
+  getJsonUser() {
+    return this.http.get("https://jsonplaceholder.typicode.com/users").pipe(
+     
+      map((userList: any) => userList.map((user: any) => {
+        return { id: user.id, name: user.name }
+      })),
+       tap(userlist=>{
+        debugger;
+      })
+    );
+  }
+
+  getSingleUser() {
+    return this.http.get("https://jsonplaceholder.typicode.com/users/2").pipe(
+      map((userData: any) => userData.address)
+    );
   }
 
 

@@ -12,6 +12,7 @@ import { ResourceAPI } from './components/resource-api/resource-api';
 import { Login } from './components/login/login';
 import { Layout } from './components/layout/layout';
 import { RxjsBasic } from './components/rxjs/rxjs-basic/rxjs-basic';
+import { RxjsOperator } from './components/rxjs/rxjs-operator/rxjs-operator';
 
 export const routes: Routes = [
 
@@ -49,6 +50,10 @@ export const routes: Routes = [
             {
                 path: 'rxjs-basic',
                 component: RxjsBasic
+            },
+            {
+                path: 'rxjs-operator',
+                component: RxjsOperator
             },
             {
                 path: 'Attribute-dir',
