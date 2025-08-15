@@ -13,6 +13,7 @@ import { Login } from './components/login/login';
 import { Layout } from './components/layout/layout';
 import { RxjsBasic } from './components/rxjs/rxjs-basic/rxjs-basic';
 import { RxjsOperator } from './components/rxjs/rxjs-operator/rxjs-operator';
+import { SubBehReplay } from './components/rxjs/sub-beh-replay/sub-beh-replay';
 
 export const routes: Routes = [
 
@@ -54,6 +55,10 @@ export const routes: Routes = [
             {
                 path: 'rxjs-operator',
                 component: RxjsOperator
+            },
+            {
+                path: 'subject',
+                component: SubBehReplay
             },
             {
                 path: 'Attribute-dir',
