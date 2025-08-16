@@ -32,25 +32,28 @@
 </div>
 <div class="row">
     <div class="col-3">
-        <input type="text" [(ngModel)]="startMonthName">
-        @for (item of citList; track $index) {
-        <li>{{item}}</li>
-        } 
+        <input type="text" [(ngModel)]="startMonthName"> 
+        <ul>
+            @for (item of citList |filterArray:startMonthName:''; track $index) {
+            <li>{{item}}</li>
+            }
+        </ul>
+
     </div>
     <div class="col-3">
         <select name="" id="">
             @for (item of citList; track $index) {
-            <option value="">{{item}}</option>
+             <option value="">{{item}}</option>
             }
         </select>
     </div>
     <div class="col-6">
         <div class="row">
             <div class="col-12 text-end">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" [(ngModel)]="userSearch">
             </div>
         </div>
-        
+
         <table class="table table-bordered table-secondary">
             <thead>
                 <tr>
@@ -61,7 +64,7 @@
                 </tr>
             </thead>
             <tbody>
-                @for (item of studentList; track $index) {
+                @for (item of studentList |filterArray:userSearch:'name'; track $index) {
                 <tr>
                     <td>{{$index+1}}</td>
                     <td>{{item.name}}</td>
