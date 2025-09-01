@@ -1,0 +1,9 @@
+<div class="alert " [ngClass]="alertColorClassName">
+  <strong>Success!</strong>
+  <ng-content>
+    
+  </ng-content>
+  {{alertTitle}}
+</div>
+
+<button (click)="closeICon()">Close</button>

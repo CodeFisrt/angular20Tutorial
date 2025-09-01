@@ -15,6 +15,9 @@ import { RxjsBasic } from './components/rxjs/rxjs-basic/rxjs-basic';
 import { RxjsOperator } from './components/rxjs/rxjs-operator/rxjs-operator';
 import { SubBehReplay } from './components/rxjs/sub-beh-replay/sub-beh-replay';
 import { CombineObs } from './components/rxjs/combine-obs/combine-obs';
+import { RxjsReactiveForm } from './components/rxjs/rxjs-reactive-form/rxjs-reactive-form';
+import { ViewContentChildren } from './components/interviewScenarios/view-content-children/view-content-children';
+import { Unsubscribe } from './components/rxjs/unsubscribe/unsubscribe';
 
 export const routes: Routes = [
 
@@ -44,7 +47,10 @@ export const routes: Routes = [
                 path: 'databinding',
                 component: DataBinding
             },
-
+ {
+                path: 'unsubscribe',
+                component: Unsubscribe
+            },
             {
                 path: 'signal',
                 component: SignalEx
@@ -65,6 +71,11 @@ export const routes: Routes = [
                 path: 'Attribute-dir',
                 component: AttDirective
             },
+            
+            {
+                path: 'rxjs-reactive',
+                component: RxjsReactiveForm
+            },
             {
                 path: 'get-api',
                 component: GetApi
@@ -72,6 +83,10 @@ export const routes: Routes = [
             {
                 path: 'users',
                 component: User
+            },
+             {
+                path: 'view-content',
+                component: ViewContentChildren
             },
             {
                 path: 'reactive-users',

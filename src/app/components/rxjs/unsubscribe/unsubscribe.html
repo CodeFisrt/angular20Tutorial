@@ -1,0 +1,13 @@
+<p>unsubscribe works!</p>
+
+
+<button (click)="startIntervale()">start</button>
+
+{{cuurentIntevale}}
+<button (click)="stopInterval()">stop</button>
+<ul>
+    @for (item of userList$ |async; track $index) {
+      <li> {{item.username}}</li>
+    }
+    
+</ul>
