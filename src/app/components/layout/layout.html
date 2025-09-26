@@ -18,6 +18,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="rxjs-basic">Rxjs-Basic</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="signal-in-depth">Signal-in-Depth</a>
+        </li>
+
       </ul>
       <form class="d-flex">
         <select name="" id="" (change)="onRoleChange($event)">
@@ -25,6 +29,14 @@
           <option value="Admin">Admin</option>
           <option value="SuperAdmin">Super Admin</option>
         </select>
+
+        <button type="button" (click)="onDecremtn()">--</button>
+
+        <span class="text-white">{{counter}}</span>
+
+        <button type="button" (click)="onIncrement()">++</button>
+
+
         @if (loggedUserName == '') {
         <button class="btn btn-primary" routerLink="login" type="button">Login</button>
         } @else {

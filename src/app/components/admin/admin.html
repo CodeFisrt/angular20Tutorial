@@ -1,6 +1,11 @@
-<p>admin works!</p>
+<p appTooltip [tooltiptext]="'Admin tooltip'">admin works!</p> -counter <h1>{{curretCounter}}</h1>
 <h1>Adimin Page</h1>
 
-<span class="primaryColor"> {{firstName}} </span>
+<app-alert [alertTitle]="alertText"></app-alert>
+{{courseName}} -- {{courseDuartion()}}
+<button (click)="chnageCouserNAme()">chnage title</button>
 
- 
+<div (click)="divclickevent()" style="height: 100px;width: 100px;background-color: red;">
+
+    <button (click)="btnClickEvent($event)"> Inner btn</button>
+</div>

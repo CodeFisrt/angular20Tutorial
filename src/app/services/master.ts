@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Subject, tap } from 'rxjs';
+import { BehaviorSubject, map, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,14 @@ export class Master {
   appName: string = "Angular App";
 
   onLogin: Subject<boolean> = new Subject<boolean>();
+
+  currentCounter: number = 0;
+
+  $currentCounterSubject: Subject<number> = new Subject< number>;
+  
+  $curretCouneteBehvaiourSub: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+
+
 
   constructor(private http: HttpClient) { }
 

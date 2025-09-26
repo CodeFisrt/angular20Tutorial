@@ -2,3 +2,6 @@
 .primary { 
     color: red;
 }
+.form-control { 
+    border: 1px solid gray !important;
+}

@@ -13,14 +13,28 @@ export class Layout {
 
   loggedUserName: string = '';
   router= inject(Router)
-  userSrv  = inject(UserService)
+  userSrv  = inject(UserService);
+  counter: number = 4;
 
   constructor(private masterService: Master) {
+    this.masterService.currentCounter =  this.counter;
     this.readLoggedData();
     this.masterService.onLogin.subscribe(res => {
       this.readLoggedData();
     })
 
+  }
+
+  onDecremtn() {
+    this.counter --;
+    this.masterService.$currentCounterSubject.next( this.counter)
+    this.masterService.$curretCouneteBehvaiourSub.next(this.counter)
+  }
+
+  onIncrement() {
+    this.counter ++;
+    this.masterService.$currentCounterSubject.next( this.counter)
+        this.masterService.$curretCouneteBehvaiourSub.next(this.counter)
   }
 
   onRoleChange(event: any) {

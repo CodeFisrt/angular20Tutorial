@@ -1,10 +1,12 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { EmployeeService } from '../../services/employee-service';
 
 @Component({
   selector: 'app-signal-ex',
   imports: [],
   templateUrl: './signal-ex.html',
-  styleUrl: './signal-ex.css'
+  styleUrl: './signal-ex.css',
+  providers:[EmployeeService]
 })
 export class SignalEx {
 
@@ -16,7 +18,10 @@ export class SignalEx {
   courseDuration = signal("15 Videos");
 
   courseDetail =  computed(()=> this.courseName() + " - " + this.courseDuration())
+  
+  empService = inject(EmployeeService)
 
+ // empService = new EmployeeService();
   constructor() {
     this.firstName = "Rahul";
     console.log(this.firstName);
@@ -27,5 +32,9 @@ export class SignalEx {
 
    
     console.log(this.courseName())
+  }
+  readData() {
+    const cityName = this.empService.get('city')
+    debugger;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-data-binding',
@@ -23,21 +24,41 @@ export class DataBinding {
 
   myClassName: string = "myColor";
 
-  userSrv = inject(UserService)
+  // userSrv = inject(UserService)
+  // masterSrv = inject(Master)
 
+  num1: number = 0;
+  num2: number = 0;
+
+  result: number = 0;
+
+
+  curretCounter = 0;
   constructor() {
-    this.userSrv.$roleBehvaiour.subscribe((res:string)=>{
-      debugger;
-    })
-    this.userSrv.$roleSub.subscribe((res:string)=>{
-      debugger;
-    })
+    // this.masterSrv.$currentCounterSubject.subscribe(res=>{
+    //   debugger;
+    //   this.curretCounter = res;
+    // })
+    // this.masterSrv.$curretCouneteBehvaiourSub.subscribe(res=>{
+    //   debugger;
+    //   this.curretCounter = res;
+    // })
+  }
+
+  addTwoNo() {
+    debugger;
+    this.result =  this.num1 +  this.num2;
+  }
+
+  readValueFromService() {
+    debugger;
+    //this.curretCounter =  this.masterSrv.currentCounter;
   }
 
   getUser() {
-    this.userSrv.getUserById(this.userId).subscribe((res:any)=>{
-      debugger;
-    })
+    // this.userSrv.getUserById(this.userId).subscribe((res:any)=>{
+    //   debugger;
+    // })
   }
 
   showWelcomeMessage() {

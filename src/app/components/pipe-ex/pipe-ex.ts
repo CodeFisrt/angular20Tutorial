@@ -1,6 +1,7 @@
 import { DatePipe, JsonPipe, LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { NaPipe } from '../../pipes/na-pipe';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-pipe-ex',
@@ -9,7 +10,7 @@ import { NaPipe } from '../../pipes/na-pipe';
   templateUrl: './pipe-ex.html',
   styleUrl: './pipe-ex.css'
 })
-export class PipeEx {
+export class PipeEx  implements AfterViewInit{
 
   courseName = "angular";
 
@@ -26,6 +27,20 @@ export class PipeEx {
       city:'Pune',
       state:""
     }
+  }
+
+  master= inject(Master);
+  currentCounet= 0;
+
+  ngAfterViewInit(): void {
+    this.master.$currentCounterSubject.subscribe((res)=>{
+      debugger;
+        this.currentCounet =  res;
+    })
+    this.master.$curretCouneteBehvaiourSub.subscribe((res)=>{
+      debugger;
+        this.currentCounet =  res;
+    })
   }
 
 }

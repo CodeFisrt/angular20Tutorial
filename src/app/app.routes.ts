@@ -18,6 +18,8 @@ import { CombineObs } from './components/rxjs/combine-obs/combine-obs';
 import { RxjsReactiveForm } from './components/rxjs/rxjs-reactive-form/rxjs-reactive-form';
 import { ViewContentChildren } from './components/interviewScenarios/view-content-children/view-content-children';
 import { Unsubscribe } from './components/rxjs/unsubscribe/unsubscribe';
+import { UserList } from './components/user-list/user-list';
+import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 
 export const routes: Routes = [
 
@@ -46,6 +48,10 @@ export const routes: Routes = [
             {
                 path: 'databinding',
                 component: DataBinding
+            },
+            {
+                path: 'signal-in-depth',
+                component: SignalInDepth
             },
  {
                 path: 'unsubscribe',
@@ -78,11 +84,12 @@ export const routes: Routes = [
             },
             {
                 path: 'get-api',
-                component: GetApi
+                component: GetApi,
+                canActivate:[]
             },
             {
                 path: 'users',
-                component: User
+                component: UserList
             },
              {
                 path: 'view-content',

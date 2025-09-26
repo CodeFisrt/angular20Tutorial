@@ -1,0 +1,103 @@
+
+<div class="row pt-2">
+    <div class="col-3">
+        <p> {{courseName()}}</p>
+        <br>
+        {{cityList()}}
+        <br>
+        {{studentObj()| json}}
+    </div>
+    <div class="col-3">
+        <input type="text" #cityNameText [(ngModel)]="cityName" class="form-control">
+
+         <button class="btn btn-success btn-sm" (click)="addCity()">Add City</button>
+    </div>
+    <div class="col-3">
+        <select type="text" class="form-select">
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Thane</option>
+            <option>Nagpur</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <input type="text" class="form-control" value="">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <app-alert [alertTitle]="'Demo Title'"></app-alert>
+    </div>
+</div>
+
+<div class="row pt-2">
+    <div class="col-4">
+        <button class="btn btn-success btn-sm" (click)="chnageCourseNma()">Change</button>
+    </div>
+     <div class="col-4">
+        <button class="btn btn-success btn-sm" (click)="chnageArray()">Change</button>
+    </div>
+</div>
+<hr>
+<div class="row pt-4">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-4">
+                <label for="">First Name</label>
+                <input type="text" (input)="updateFName($event)" class="form-control">
+            </div>
+            <div class="col-4">
+                <label for="">Middle Name</label>
+                <input type="text" (input)="updateMName($event)" class="form-control">
+            </div>
+            <div class="col-4">
+                <label for="">Last Name</label>
+                <input type="text" (input)="updateLName($event)" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="">Full Name - {{fullName()}}</label>
+                <input type="text" [value]="fullName()" class="form-control">
+            </div>
+        </div>
+    </div>
+     <div class="col-6">
+        -{{employeeObj()| json}}
+        <div class="row">
+            <div class="col-4">
+                <label for="">EmpId</label>
+                 <input type="text" (input)="changeEmpIdValue($event)" class="form-control">
+            </div>
+             <div class="col-4">
+                <label for="">Name</label>
+                 <input type="text" (input)="changeFormValue('empName',$event)" class="form-control">
+            </div>
+             <div class="col-4">
+                <label for="">City</label>
+                 <input type="text" (input)="changeFormValue('empCity',$event)" class="form-control" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="">Pin Code</label>
+                 <input type="text" (input)="changeFormValue('empPinCode',$event)" class="form-control">
+            </div>
+             <div class="col-4">
+                <label for="">State</label>
+                 <input type="text" (input)="changeFormValue('empState',$event)" class="form-control">
+            </div> 
+        </div>
+         <div class="row pt-2">
+            <div class="col-12">
+               <button class="btn btn-warning"> Save Employee </button>
+            </div>
+              
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+   
+</div>

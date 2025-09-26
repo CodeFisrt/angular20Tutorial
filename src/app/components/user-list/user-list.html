@@ -1,4 +1,20 @@
 <h2>User List</h2>
+<button (click)="chnageVal()">Chnage</button>
 <ul>
-  <li *ngFor="let user of users">{{ user }}</li>
+  <li *ngFor="let user of users;trackBy: trackById">
+     <span>
+         {{ user.id }}
+      </span>
+      <span>
+         {{ user.name }}
+      </span>
+      <span>
+         
+      </span>
+      <span>
+        {{random()}}
+      </span>
+   
+  
+  </li>
 </ul>
