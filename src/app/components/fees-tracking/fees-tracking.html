@@ -1,0 +1,174 @@
+<div class="parent">
+    <div class="main-container">
+        <div class="header-section">
+            <h1><i class="bi bi-bank2"></i> Institute Fees Management System</h1>
+            <p>Track and manage student fee payments efficiently</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card total">
+                <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                <h3>Total Students</h3>
+                <div class="stat-value">12</div>
+            </div>
+            <div class="stat-card paid">
+                <div class="stat-icon"><i class="bi bi-check-circle-fill"></i></div>
+                <h3>Full Paid</h3>
+                <div class="stat-value">1</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+                <h3>Partial Paid</h3>
+                <div class="stat-value">5</div>
+            </div>
+            <div class="stat-card unpaid">
+                <div class="stat-icon"><i class="bi bi-x-circle-fill"></i></div>
+                <h3>Not Paid</h3>
+                <div class="stat-value">6</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <h2><i class="bi bi-table"></i> Student Enrollments</h2>
+                <button class="btn btn-primary-custom" (click)="openModel()">
+                    <i class="bi bi-plus-circle"></i> New Enrollment
+                </button>
+            </div>
+
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search by student name...">
+                </div>
+                <select class="filter-select form-select" id="statusFilter" style="width: auto;">
+                    <option value="all">All Status</option>
+                    <option value="full">Full Paid</option>
+                    <option value="partial">Partial Paid</option>
+                    <option value="notpaid">Not Paid</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Student Name</th>
+                            <th>Total Fees</th>
+                            <th>EMI-1</th>
+                            <th>EMI-2</th>
+                            <th>EMI-3</th>
+                            <th>Total Received</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enrollmentTable">
+                        @for (item of enrollmentList(); track $index) {
+                        <tr [class]="getFeesStatus(item)">
+                            <td>{{$index}}</td>
+                            <td><strong>{{item.studentName}}</strong></td>
+                            <td class="amount-cell">₹{{item.totalFees}}</td>
+                            <td>₹{{item.emi1}}</td>
+                            <td>₹{{item.emi2}}</td>
+                            <td>{{item.emi3}}</td>
+                            <td class="amount-cell">₹{{item.totalReceived}}</td>
+                            <td><span class="status-badge status-partial-paid">{{item.status}}</span></td>
+                            <td>
+                                <button class="action-btn btn-view" (click)="onDelete(item.enrollmentId)" ><i class="bi bi-trash"></i></button>
+                                <button class="action-btn btn-edit" (click)="onEdit(item)" ><i class="bi bi-pencil"></i></button>
+                            </td>
+                        </tr>
+                        }
+
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="enrollmentModal" #newModal tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-person-plus-fill"></i> New Student Enrollment</h5>
+                <button type="button" class="btn-close btn-close-white" (click)="onClose()"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Student Name *</label>
+                        <input type="text" [(ngModel)]="newEnrolObj.studentName" class="form-control"
+                            placeholder="Enter student name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Contact Number *</label>
+                        <input type="tel" [(ngModel)]="newEnrolObj.contactNo" class="form-control"
+                            placeholder="Enter contact number" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Batch *</label>
+                        <select [(ngModel)]="newEnrolObj.batchId" class="form-select" required>
+                            <option value="">Select Batch</option>
+                            @for (item of batchList; track $index) {
+                            <option [value]="item.batchId">{{item.batchName}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Total Fees (₹) *</label>
+                        <input type="number" [(ngModel)]="newEnrolObj.totalFees" class="form-control"
+                            placeholder="Enter total fees" required>
+                    </div>
+                </div>
+
+                <div class="emi-section">
+                    <h6><i class="bi bi-calendar-check"></i> EMI Payment Details</h6>
+                    <div class="emi-input-group">
+                        <div>
+                            <label class="form-label">EMI-1 (₹)</label>
+                            <input type="number" [(ngModel)]="newEnrolObj.emi1" class="form-control"
+                                placeholder="Amount">
+                        </div>
+                        <div>
+                            <label class="form-label">EMI-2 (₹)</label>
+                            <input type="number" [(ngModel)]="newEnrolObj.emi2" class="form-control"
+                                placeholder="Amount">
+                        </div>
+                        <div>
+                            <label class="form-label">EMI-3 (₹)</label>
+                            <input type="number" [(ngModel)]="newEnrolObj.emi3" class="form-control"
+                                placeholder="Amount">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end gap-2 mt-3">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                    @if(newEnrolObj.enrollmentId ==0) {
+                         <button type="button" (click)="createNewEnrollment()" class="btn btn-primary-custom">
+                        <i class="bi bi-check-circle"></i> Submit Enrollment
+                    </button>
+                    } @else {
+                         <button type="button" (click)="updateEnrollment()" class="btn btn-warning">
+                        <i class="bi bi-check-circle"></i> Update Enrollment
+                    </button>
+                    }
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

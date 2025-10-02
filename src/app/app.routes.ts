@@ -20,6 +20,7 @@ import { ViewContentChildren } from './components/interviewScenarios/view-conten
 import { Unsubscribe } from './components/rxjs/unsubscribe/unsubscribe';
 import { UserList } from './components/user-list/user-list';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
+import { FeesTracking } from './components/fees-tracking/fees-tracking';
 
 export const routes: Routes = [
 
@@ -48,6 +49,10 @@ export const routes: Routes = [
             {
                 path: 'databinding',
                 component: DataBinding
+            },
+            {
+                path: 'feestracking',
+                component: FeesTracking
             },
             {
                 path: 'signal-in-depth',
