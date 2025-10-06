@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AddPaymentColor } from '../../directive/add-payment-color';
 
 @Component({
   selector: 'app-fees-tracking',
-  imports: [FormsModule],
+  imports: [FormsModule, AddPaymentColor],
   templateUrl: './fees-tracking.html',
   styleUrl: './fees-tracking.css'
 })
@@ -14,6 +15,13 @@ export class FeesTracking implements OnInit {
   @ViewChild('newModal') modal!: ElementRef;
   newEnrolObj: NewEnrollment = new NewEnrollment();
   http = inject(HttpClient);
+  dashBoardData!: IDashboard;
+
+  filterObj: any = {
+    "batchid": 0,
+    "status": "",
+    "search": ""
+  }
 
   batchList: any[] = [];
 
@@ -23,6 +31,15 @@ export class FeesTracking implements OnInit {
   ngOnInit(): void {
     this.getAllBatches();
     this.getAllEnrollments();
+    this.getDashBoardData();
+  }
+
+  getDashBoardData() {
+    this.http.get("https://api.freeprojectapi.com/api/FeesTracking/GetDashboardStats").subscribe({
+      next: (result: any) => {
+        this.dashBoardData  = result
+      }
+    })
   }
 
   getAllBatches() {
@@ -33,14 +50,22 @@ export class FeesTracking implements OnInit {
     })
   }
 
+  onSearch() {
+    this.http.post("https://api.freeprojectapi.com/api/FeesTracking/FilterEnrollments", this.filterObj).subscribe({
+      next: (result: any) => {
+        this.enrollmentList.set(result)
+      }
+    })
+  }
+
   createNewEnrollment() {
     debugger;
     this.http.post("https://api.freeprojectapi.com/api/FeesTracking/addNewEnrollment", this.newEnrolObj).subscribe({
       next: (result: any) => {
         debugger;
         alert("Enrollment Success");
-        this.enrollmentList.update(oldList=> ([...oldList,result]))
-         
+        this.enrollmentList.update(oldList => ([...oldList, result]))
+
       },
       error: (error) => {
         alert(error.error)
@@ -61,7 +86,7 @@ export class FeesTracking implements OnInit {
     })
   }
 
-  onDelete(id: number) { 
+  onDelete(id: number) {
     const isDelete = confirm("Are you sure want to do Soft Delete");
     if (isDelete) {
       this.http.delete("https://api.freeprojectapi.com/api/FeesTracking/SoftDeleteById?id=" + id).subscribe({
@@ -105,6 +130,7 @@ export class FeesTracking implements OnInit {
   }
 
   getFeesStatus(data: any) {
+    console.log("getFeesStatus")
     if (data.totalFees == data.totalReceived) {
       return 'row-full-paid'
     } else if (data.totalReceived == 0) {
@@ -140,4 +166,20 @@ class NewEnrollment {
     this.status = '';
     this.isSoftDelete = true;
   }
+}
+
+interface IDashboard {
+  totalbatches: number;
+  totalamounttobereceived: number;
+  totalreceived: number;
+  totalpending: number;
+  batchwisestats: IBatchWisePayment[]
+}
+
+interface IBatchWisePayment {
+  batchid: number;
+  batchname: string;
+  totalamount: number;
+  totalreceived: number;
+  totalpending: number;
 }
