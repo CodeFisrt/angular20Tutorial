@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, map, Subject, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserService implements OnDestroy {
 
   $courseDuration = new BehaviorSubject<string>("2 Months");
 
@@ -41,5 +41,10 @@ export class UserService {
       name: 'John Doe',
       email: 'john.doe@example.com',
     };
+  }
+
+  ngOnDestroy(): void {
+    debugger;
+    console.log("User service")
   }
 }

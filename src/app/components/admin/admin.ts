@@ -7,6 +7,7 @@ import { Master } from '../../services/master';
 import { EmployeeService } from '../../services/employee-service';
 import { Tooltip } from '../../directive/tooltip';
 import { Alert } from '../../reusableComponent/alert/alert';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -29,6 +30,8 @@ export class Admin implements OnDestroy {
   empService  = inject(EmployeeService);
 
   masterServ = inject(Master);//16
+
+  userService = inject(UserService);//16
 
   subscriptionList: Subscription [] = [];
   courseName = "Angular 20 Tutorial";

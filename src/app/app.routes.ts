@@ -94,7 +94,7 @@ export const routes: Routes = [
             },
             {
                 path: 'users',
-                component: UserList
+                component: User
             },
              {
                 path: 'view-content',

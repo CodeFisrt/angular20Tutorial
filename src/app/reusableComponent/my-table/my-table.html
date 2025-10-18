@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @for (item of headerList; track $index) {
+            <th> {{item.headerText}}</th>
+            }
+            @if (isActionButtonRequired) {
+            <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of gridData; track $index) {
+        <tr>
+            @for (column of headerList; track $index) {
+            <td> {{ item[column.fieldName]}}</td>
+            }
+            @if (isActionButtonRequired) {
+            <td>
+                <button class="btn btn-success" (click)="onEditCell(item)">Edit</button>
+                <button class="btn btn-danger" (click)="onDeleteClicked(item)">Delete</button>
+            </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

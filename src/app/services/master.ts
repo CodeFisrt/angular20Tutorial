@@ -27,6 +27,18 @@ export class Master {
     return result;
   }
 
+
+  getFeesStatus(totalFees: number,totalReceived: number) {
+      console.log("getFeesStatus")
+      if (totalFees == totalReceived) {
+        return 'row-full-paid'
+      } else if (totalReceived == 0) {
+        return 'row-not-paid'
+      } else {
+        return 'row-partial-paid'
+      }
+    }
+
   getUsers() {
     debugger;
     return this.http.get("https://api.freeprojectapi.com/api/GoalTracker/getAllUsers")

@@ -5,7 +5,11 @@
                 User List
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <app-my-table [gridData]="userList" [headerList]="columnList"
+                    [isActionButtonRequired]="true" (onEditClicked)="onEdit($event)"
+                    (onDeletAction)="onDeleteUser($event)"
+                    ></app-my-table>
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Sr No</th>
@@ -33,7 +37,7 @@
                         }
 
                     </tbody>
-                </table>
+                </table> -->
             </div>
         </div>
     </div>

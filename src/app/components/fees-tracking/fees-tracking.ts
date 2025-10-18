@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AddPaymentColor } from '../../directive/add-payment-color';
+import { getFeesStatus } from '../../helpers/helper';
 
 @Component({
   selector: 'app-fees-tracking',
@@ -129,15 +130,9 @@ export class FeesTracking implements OnInit {
     this.openModel()
   }
 
-  getFeesStatus(data: any) {
+  getFeesStatusNew(data: any) {
     console.log("getFeesStatus")
-    if (data.totalFees == data.totalReceived) {
-      return 'row-full-paid'
-    } else if (data.totalReceived == 0) {
-      return 'row-not-paid'
-    } else {
-      return 'row-partial-paid'
-    }
+    const classnMae =  getFeesStatus(data.totalFees,data.totalReceived);
   }
 }
 class NewEnrollment {

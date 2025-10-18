@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Master } from '../../services/master';
+import { GridColumn, MyTable } from "../../reusableComponent/my-table/my-table";
 
 @Component({
   selector: 'app-user',
-  imports: [FormsModule],
+  imports: [FormsModule, MyTable],
   templateUrl: './user.html',
   styleUrl: './user.css'
 })
@@ -20,6 +21,12 @@ export class User implements OnInit {
     "fullName": "",
     "mobileNo": ""
   };
+  columnList: GridColumn[] = [
+    { fieldName: 'emailId', headerText: 'Email' },
+    { fieldName: 'fullName', headerText: 'Full Name' },
+    { fieldName: 'mobileNo', headerText: 'Contact No' },
+    { fieldName: 'password', headerText: 'Password' }
+  ]
 
 
   http = inject(HttpClient);
@@ -86,10 +93,11 @@ export class User implements OnInit {
     })
   }
 
-  onDeleteUser(id: number) { 
+  onDeleteUser(item: any) { 
+    debugger;
     const isDelet = confirm("Are you sure want to Delete");
     if (isDelet) {
-      this.http.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?id=" + id).subscribe({
+      this.http.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?id=" + item.userId).subscribe({
         next: () => {
           alert("User Delete Success");
           this.getUsers()
@@ -103,6 +111,7 @@ export class User implements OnInit {
   }
 
   onEdit(item: any) {
+      debugger;
     this.userObj = item;
   }
 
