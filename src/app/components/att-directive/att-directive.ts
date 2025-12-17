@@ -1,16 +1,29 @@
 import { DatePipe, JsonPipe, LowerCasePipe, NgClass, NgStyle, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { MasterService } from '../../services/master-service';
 
 @Component({
   selector: 'app-att-directive',
   imports: [NgClass,NgStyle,UpperCasePipe,
     LowerCasePipe,TitleCasePipe, SlicePipe,JsonPipe,DatePipe],
   templateUrl: './att-directive.html',
-  styleUrl: './att-directive.css'
+  styleUrl: './att-directive.css',
+  providers: [MasterService]
 })
 export class AttDirective implements OnInit,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,OnDestroy {
 
   div1ClassName =  signal<string>("");
+  masterSev=  inject(MasterService);
+   constructor() {
+    console.log("constructor")
+     this.masterSev.petName = "Lion";
+    setTimeout(() => {
+       debugger;
+        const petNameFromServiceVariable =  this.masterSev.petName; //Tiger
+    }, 5000);
+    
+      
+  }
 
   firstName: string = "chetan";
   courseName : string = "Angular 20 tutorial";
@@ -29,9 +42,8 @@ export class AttDirective implements OnInit,AfterContentInit,AfterContentChecked
     state: 'MH'
   }
 
-  constructor() {
-    console.log("constructor")
-  }
+
+ 
 
   ngOnInit(): void {
     console.log("ngOnInit")

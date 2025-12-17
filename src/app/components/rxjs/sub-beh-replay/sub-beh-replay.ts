@@ -38,13 +38,13 @@ export class SubBehReplay implements OnInit{
 
   ngOnInit(): void {
     this.userSrv.$courseDuration.subscribe((Res:any)=>{
-      debugger;
+      
     })
     this.studentName$.subscribe((res:any)=>{
-      debugger;
+      
     })
     this.rollNO$.subscribe((res:any)=>{
-      debugger;
+      
     })
   }
 

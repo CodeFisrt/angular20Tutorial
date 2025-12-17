@@ -36,28 +36,28 @@ export class DataBinding {
   curretCounter = 0;
   constructor() {
     // this.masterSrv.$currentCounterSubject.subscribe(res=>{
-    //   debugger;
+    //   
     //   this.curretCounter = res;
     // })
     // this.masterSrv.$curretCouneteBehvaiourSub.subscribe(res=>{
-    //   debugger;
+    //   
     //   this.curretCounter = res;
     // })
   }
 
   addTwoNo() {
-    debugger;
+    
     this.result =  this.num1 +  this.num2;
   }
 
   readValueFromService() {
-    debugger;
+    
     //this.curretCounter =  this.masterSrv.currentCounter;
   }
 
   getUser() {
     // this.userSrv.getUserById(this.userId).subscribe((res:any)=>{
-    //   debugger;
+    //   
     // })
   }
 

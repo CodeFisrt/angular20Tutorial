@@ -35,6 +35,6 @@ export class SignalEx {
   }
   readData() {
     const cityName = this.empService.get('city')
-    debugger;
+    
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Admin } from './components/admin/admin';
 import { User } from './components/user/user';
 import { DataBinding } from './components/data-binding/data-binding';
@@ -17,13 +17,19 @@ export class App {
   protected title = 'angular20Tutorial';
   // loggedUserName: string = '';
 
-  // constructor(private masterService: Master) {
-  //   this.readLoggedData();
-  //   this.masterService.onLogin.subscribe(res => {
-  //     this.readLoggedData();
-  //   })
+  router = inject(Router);
 
-  // }
+  constructor(private masterService: Master) {
+    // this.readLoggedData();
+    // this.masterService.onLogin.subscribe(res => {
+    //   this.readLoggedData();
+    // })
+    this.router.events.subscribe((res:any)=>{
+      
+     
+    })
+
+  }
 
   // readLoggedData() {
   //   const loggedData = localStorage.getItem("angular20User");

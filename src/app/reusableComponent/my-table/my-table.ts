@@ -17,11 +17,11 @@ export class MyTable {
 
 
   onEditCell(itemData: any) {
-    debugger;
+    
     this.onEditClicked.emit(itemData)
   }
   onDeleteClicked(itemData: any) {
-    debugger;
+    
     this.onDeletAction.emit(itemData)
   }
 }

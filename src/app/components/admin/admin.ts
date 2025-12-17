@@ -8,6 +8,8 @@ import { EmployeeService } from '../../services/employee-service';
 import { Tooltip } from '../../directive/tooltip';
 import { Alert } from '../../reusableComponent/alert/alert';
 import { UserService } from '../../services/user.service';
+import { ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { MasterService } from '../../services/master-service';
 
 @Component({
   selector: 'app-admin',
@@ -36,19 +38,36 @@ export class Admin implements OnDestroy {
   subscriptionList: Subscription [] = [];
   courseName = "Angular 20 Tutorial";
   courseDuartion = signal<string>("3 Months");
+  
   chnageCouserNAme() {
     this.courseName = "React"
   }
 
+  activateRoute = inject(ActivatedRoute);
+  masterService = inject(MasterService);
+
+ 
+
   constructor(private http: HttpClient,private changeDet: ChangeDetectorRef) {
 
+      
+    this.masterService.petName  ="Monkey"
+   
+    setTimeout(() => {
+       debugger;
+    const petNameFromService =  this.masterService.petName;// Monkey
+    }, 7000);
+    this.activateRoute.data.subscribe((res:any)=>{
+      
+    })
+     
     setTimeout(() => {
       this.courseName = "React js Tutotirl";
       
       setTimeout(() => {
         this.courseDuartion.set("5 Month and 2 Weeks")
       }, 3000);
-      debugger;
+      
     }, 4000);
     //this.getUsers()
    // this.empService.showMessage();
@@ -59,18 +78,18 @@ export class Admin implements OnDestroy {
     })
     this.subscriptionList
    const countSub$ = this.masterServ.$currentCounterSubject.subscribe(res=>{
-      debugger;
+      
       this.curretCounter = res;
     })
     this.subscriptionList.push(countSub$)
 
     this.masterServ.$curretCouneteBehvaiourSub.subscribe(res=>{
-      debugger;
+      
       this.curretCounter = res;
     })
 
     // const data$ =  new Observable<string>( res =>{
-    //   debugger;
+    //   
     //   if(this.rollNo %2 == 0 ) {
     //     res.next("No Is Even")
     //   } else {
@@ -79,23 +98,23 @@ export class Admin implements OnDestroy {
     // })
 
     // data$.subscribe((res)=>{
-    //   debugger;
+    //   
     // },error=>{
-    //   debugger;
+    //   
     // })
 
   }
 
   readData() {
     const cityName = this.empService.get('city')
-    debugger;
+    
   }
 
   getUsers() {
     fetch("https://jsonplaceholder.typicode.com/users").then((result)=>{
       return result.json()
     }).then((userList)=>{
-      debugger;
+      
     })
   }
 

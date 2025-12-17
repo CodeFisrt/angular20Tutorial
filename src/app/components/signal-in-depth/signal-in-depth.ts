@@ -45,7 +45,7 @@ export class SignalInDepth {
     })
     const course_name =  this.courseName(); 
     this.cityNameViewChild()?.nativeElement
-    debugger;
+    
     const resul = this.http.get("").subscribe((reult:any)=>{
 
     })

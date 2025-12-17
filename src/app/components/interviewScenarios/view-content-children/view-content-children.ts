@@ -34,7 +34,7 @@ export class ViewContentChildren implements AfterViewInit {
   }
 
   readValue() {
-    debugger;
+    
     const textvalue = this.amount.nativeElement.value;
 
     const alerText = this.alertCompoInstance.alertTitle;

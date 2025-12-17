@@ -124,13 +124,13 @@ export class Ecommerceapp {
   }
 
   onSearch(searchVal: string) {
-    debugger;
+    
     this.filteredProductList = this.productList.filter(m=>m.productShortName.toLowerCase().startsWith(searchVal.toLowerCase()));
   }
 
 
   addToCart(item: IPorduct) {
-    debugger;
+    
     const isExist =  this.addToCartList.find(m=>m.productShortName == item.productShortName);
     if(isExist != undefined) {
       alert("Product Alredy Added to cart")

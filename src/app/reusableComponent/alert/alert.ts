@@ -1,12 +1,13 @@
 import { NgClass } from '@angular/common';
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, contentChild, ElementRef, EventEmitter, input, Input, OnInit, Output, output } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, contentChild, ElementRef, EventEmitter, input, Input, OnInit, Output, output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
   imports: [NgClass],
   templateUrl: './alert.html',
   styleUrl: './alert.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class Alert implements OnInit , AfterViewInit, AfterViewChecked{
 
@@ -23,22 +24,22 @@ export class Alert implements OnInit , AfterViewInit, AfterViewChecked{
   alertColorClassName: string = 'alert-success';
 
   ngOnInit(): void {
-    console.log("ngOnInit")
+    console.log("Alert ngOnInit")
     this.onClose.emit("")
   }
   ngAfterViewInit(): void {
-    console.log("ngAfterViewInit")
+    console.log("Alert ngAfterViewInit")
   }
   ngAfterViewChecked(): void {
-     console.log("ngAfterViewChecked")
+     console.log(" Alert ngAfterViewChecked")
   }
   printUiRender() {
-    console.log("UI reRender")
+    console.log(" Alert UI reRender")
   }
 
 
   closeICon() {
-    debugger;
+    
     const text =  this.alertIconRef.nativeElement.innerText;
   }
 }

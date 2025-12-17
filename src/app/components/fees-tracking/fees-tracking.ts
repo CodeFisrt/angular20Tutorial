@@ -60,10 +60,10 @@ export class FeesTracking implements OnInit {
   }
 
   createNewEnrollment() {
-    debugger;
+    
     this.http.post("https://api.freeprojectapi.com/api/FeesTracking/addNewEnrollment", this.newEnrolObj).subscribe({
       next: (result: any) => {
-        debugger;
+        
         alert("Enrollment Success");
         this.enrollmentList.update(oldList => ([...oldList, result]))
 
@@ -77,7 +77,7 @@ export class FeesTracking implements OnInit {
   updateEnrollment() {
     this.http.put("https://api.freeprojectapi.com/api/FeesTracking/updateEnrollment?id=" + this.newEnrolObj.enrollmentId, this.newEnrolObj).subscribe({
       next: (result: any) => {
-        debugger;
+        
         alert("Enrollment Update Success");
         this.getAllEnrollments();
       },
@@ -92,7 +92,7 @@ export class FeesTracking implements OnInit {
     if (isDelete) {
       this.http.delete("https://api.freeprojectapi.com/api/FeesTracking/SoftDeleteById?id=" + id).subscribe({
         next: (result: any) => {
-          debugger;
+          
           alert("Enrollment Update Success");
           this.getAllEnrollments();
         },

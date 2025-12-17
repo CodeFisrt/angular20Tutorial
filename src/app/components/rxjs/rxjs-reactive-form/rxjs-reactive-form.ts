@@ -41,7 +41,7 @@ export class RxjsReactiveForm implements OnInit{
     })
     this.userForm.controls['confirmPassword'].disable();
     this.userForm.controls['name'].valueChanges.subscribe((res:string)=>{
-      //debugger;
+      //
     })
 
     // this.serachControl.valueChanges.subscribe((searchText: string)=>{
@@ -49,7 +49,7 @@ export class RxjsReactiveForm implements OnInit{
     // })
 
     this.userForm.valueChanges.subscribe((formValue: any)=>{
-      debugger;
+      
     })
 
     this.userForm.controls['password'].valueChanges.subscribe((Res:any)=>{
@@ -60,7 +60,7 @@ export class RxjsReactiveForm implements OnInit{
     })
 
     this.userForm.statusChanges.subscribe((res:any)=>{
-      debugger;
+      
     })
 
     combineLatest([

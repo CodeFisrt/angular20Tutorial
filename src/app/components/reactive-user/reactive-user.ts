@@ -63,16 +63,16 @@ export class ReactiveUser implements OnInit {
     });
   }
  onSaveUser() {
-    debugger;
+    
     const formValue =  this.userForm.value;
     this.http.post("https://api.freeprojectapi.com/api/GoalTracker/register", formValue).subscribe({
       next: (result) => {
-        debugger;
+        
         alert("User Created Success");
         this.getUsers()
       },
       error: (error) => {
-        debugger;
+        
         alert("Errro -" + error.error)
       }
     }

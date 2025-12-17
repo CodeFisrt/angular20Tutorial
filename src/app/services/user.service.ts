@@ -23,7 +23,7 @@ export class UserService implements OnDestroy {
   // }
  
   getUserById(id: number):any | undefined  {
-    debugger;
+    
     if (!this.userDetails.has(id)) {
       const userDataObs = this.http.get("https://jsonplaceholder.typicode.com/users/" + id).pipe(
         shareReplay(1)
@@ -44,7 +44,7 @@ export class UserService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    debugger;
+    
     console.log("User service")
   }
 }

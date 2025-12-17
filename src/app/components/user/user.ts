@@ -39,7 +39,7 @@ export class User implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    debugger;
+    
     const result =   this.masterService.getSum(12,50);
     const appData =  this.masterService.appName;
   }
@@ -49,23 +49,23 @@ export class User implements OnInit {
     // this.http.get("https://api.freeprojectapi.com/api/GoalTracker/getAllUsers").subscribe((res: any) => {
     //   this.userList = res;
     // });
-    debugger;
+    
     this.masterService.getUsers().subscribe((res:any)=>{
-       debugger;
+       
       this.userList = res;
     })
   }
 
   onSaveUser() {
-    debugger;
+    
     this.http.post("https://api.freeprojectapi.com/api/GoalTracker/register", this.userObj).subscribe({
       next: (result) => {
-        debugger;
+        
         alert("User Created Success");
         this.getUsers()
       },
       error: (error) => {
-        debugger;
+        
         alert("Errro -" + error.error)
       }
     }
@@ -94,7 +94,7 @@ export class User implements OnInit {
   }
 
   onDeleteUser(item: any) { 
-    debugger;
+    
     const isDelet = confirm("Are you sure want to Delete");
     if (isDelet) {
       this.http.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?id=" + item.userId).subscribe({
@@ -111,7 +111,7 @@ export class User implements OnInit {
   }
 
   onEdit(item: any) {
-      debugger;
+      
     this.userObj = item;
   }
 

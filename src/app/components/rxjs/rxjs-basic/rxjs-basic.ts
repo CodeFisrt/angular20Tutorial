@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { from, interval, Observable, of, timer } from 'rxjs';
+import { Admin } from '../../admin/admin';
+import { AttDirective } from '../../att-directive/att-directive';
+import { MasterService } from '../../../services/master-service';
 @Component({
   selector: 'app-rxjs-basic',
-  imports: [],
+  imports: [Admin,AttDirective],
   templateUrl: './rxjs-basic.html',
   styleUrl: './rxjs-basic.css'
 })
@@ -18,10 +21,13 @@ export class RxjsBasic {
 
   timer$ = timer(5000);
 
-
+  masterSrv =  inject(MasterService)
 
   constructor() {
-
+    setTimeout(() => {
+             debugger;
+       const petNameFromServiceVariable =  this.masterSrv.petName; //Tiger
+    }, 10000);
     this.timer$.subscribe(res => {
       console.log("Timer Executed");
     });
@@ -31,12 +37,12 @@ export class RxjsBasic {
     });
 
     this.cittList$.subscribe((cityData: string[]) => {
-      debugger;
+      
       console.log(cityData);
     });
 
     this.cityList2$.subscribe((res: string) => {
-      debugger;
+      
     });
 
     const myObs$ = new Observable(value => {

@@ -34,11 +34,11 @@ export class PipeEx  implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.master.$currentCounterSubject.subscribe((res)=>{
-      debugger;
+      
         this.currentCounet =  res;
     })
     this.master.$curretCouneteBehvaiourSub.subscribe((res)=>{
-      debugger;
+      
         this.currentCounet =  res;
     })
   }

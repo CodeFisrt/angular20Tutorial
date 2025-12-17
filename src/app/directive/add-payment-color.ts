@@ -15,7 +15,7 @@ export class AddPaymentColor implements OnInit {
   }
 
   getFeesStatus() {
-    debugger;
+    
     console.log("getFeesStatus")
     if (this.paymentData.totalFees == this.paymentData.totalReceived) {
       this.render.addClass(this.elementRef.nativeElement, 'row-full-paid')

@@ -1,20 +1,30 @@
-<h2>User List</h2>
-<button (click)="chnageVal()">Chnage</button>
-<ul>
-  <li *ngFor="let user of users;trackBy: trackById">
-     <span>
-         {{ user.id }}
-      </span>
-      <span>
-         {{ user.name }}
-      </span>
-      <span>
-         
-      </span>
-      <span>
-        {{random()}}
-      </span>
-   
-  
-  </li>
-</ul>
+<div class="row">
+  <div class="col-3">
+    {{productName}} -- {{productPrice()}}
+  </div>
+  <div class="col-3">
+    <input type="text" [value]="productName">
+  </div>
+    <div class="col-3">
+    <input type="text" [value]="productPrice()">
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-3">
+    <button (click)="ChnageProduct()">Change Product</button>
+  </div>
+   <div class="col-3">
+    <button (click)="chnageTitkle()">Change Title</button>
+  </div>
+
+</div>
+<hr>
+ <app-alert [alertTitle]="myAlertTitle"> </app-alert>  
+<hr>
+<hr>
+{{userList.length}}
+
+<div class="myPrimarySquare">
+  Div 1
+</div>

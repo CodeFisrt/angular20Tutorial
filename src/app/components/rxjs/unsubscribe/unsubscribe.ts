@@ -44,7 +44,7 @@ export class Unsubscribe implements OnInit, OnDestroy {
     this.timeInterval.pipe(
       take(5)
     ).subscribe(num=>{
-      debugger;
+      
       this.cuurentIntevale =  num;
     })
   }

@@ -38,7 +38,7 @@ export class Layout {
   }
 
   onRoleChange(event: any) {
-    debugger;
+    
     this.userSrv.$roleBehvaiour.next(event.target.value)
     this.userSrv.$roleSub.next(event.target.value)
   }

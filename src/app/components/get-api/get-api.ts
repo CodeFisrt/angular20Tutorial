@@ -31,16 +31,16 @@ export class GetApi implements OnInit {
 
 
   ngOnInit(): void {
-    debugger;
+    
     this.getUsers();
     this.getTodoItems();
     this.getAllBusBookignUsers();
   }
 
   getUsers() {
-    debugger;
+    
     this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((result: any) => {
-      debugger;
+      
       this.userList = result;
     })
   }

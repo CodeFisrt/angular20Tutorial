@@ -22,7 +22,7 @@ export class Master {
   constructor(private http: HttpClient) { }
 
   getSum(num1: number, num2: number) {
-    debugger;
+    
     const result = num1 + num2;
     return result;
   }
@@ -40,7 +40,7 @@ export class Master {
     }
 
   getUsers() {
-    debugger;
+    
     return this.http.get("https://api.freeprojectapi.com/api/GoalTracker/getAllUsers")
   }
 
@@ -51,7 +51,7 @@ export class Master {
         return { id: user.id, name: user.name }
       })),
        tap(userlist=>{
-        debugger;
+        
       })
     );
   }

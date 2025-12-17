@@ -22,6 +22,8 @@ import { UserList } from './components/user-list/user-list';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { FeesTracking } from './components/fees-tracking/fees-tracking';
 import { Ecommerceapp } from './components/ecommerceapp/ecommerceapp';
+import { adminReslverResolver } from './services/admin-reslver-resolver';
+import { RxjsEx } from './components/rxjs-ex/rxjs-ex';
 
 export const routes: Routes = [
 
@@ -38,18 +40,27 @@ export const routes: Routes = [
         path: '',
         component: Layout,
         children: [
-
             {
                 path: 'admin',
-                component: Admin
+                component: Admin,
+                data:{
+                    roles: ['admin','guest'],
+                    icon:'fa fa-user'
+                },
+                title:'Admin Page',
+                resolve:{
+                    userlist: adminReslverResolver 
+                }
             },
             {
                 path: 'control-flow-statment',
-                component: ControlFlow
+                component: ControlFlow,
+                title:'Control-Flow'
             },
             {
                 path: 'databinding',
-                component: DataBinding
+                component: DataBinding,
+                title:'Data-Binding'
             },
             {
                 path: 'ecommerceapp',
@@ -63,7 +74,11 @@ export const routes: Routes = [
                 path: 'signal-in-depth',
                 component: SignalInDepth
             },
- {
+            {
+                path: 'rxjsex',
+                component: RxjsEx
+            },
+            {
                 path: 'unsubscribe',
                 component: Unsubscribe
             },
@@ -87,7 +102,7 @@ export const routes: Routes = [
                 path: 'Attribute-dir',
                 component: AttDirective
             },
-            
+
             {
                 path: 'rxjs-reactive',
                 component: RxjsReactiveForm
@@ -95,13 +110,17 @@ export const routes: Routes = [
             {
                 path: 'get-api',
                 component: GetApi,
-                canActivate:[]
+                canActivate: []
             },
             {
                 path: 'users',
                 component: User
             },
-             {
+            {
+                path: 'user-list',
+                component: UserList
+            },
+            {
                 path: 'view-content',
                 component: ViewContentChildren
             },
