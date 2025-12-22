@@ -24,6 +24,7 @@ import { FeesTracking } from './components/fees-tracking/fees-tracking';
 import { Ecommerceapp } from './components/ecommerceapp/ecommerceapp';
 import { adminReslverResolver } from './services/admin-reslver-resolver';
 import { RxjsEx } from './components/rxjs-ex/rxjs-ex';
+import { Rxjs2 } from './components/rxjs2/rxjs2';
 
 export const routes: Routes = [
 
@@ -77,6 +78,10 @@ export const routes: Routes = [
             {
                 path: 'rxjsex',
                 component: RxjsEx
+            },
+            {
+                path: 'rxjsex2',
+                component: Rxjs2
             },
             {
                 path: 'unsubscribe',
